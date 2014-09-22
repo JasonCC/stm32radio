@@ -224,7 +224,7 @@ void rt_hw_board_init(void)
     rt_console_set_device("uart3");
 #endif
 
-	up_mcu_show();
+	/* up_mcu_show(); */
     rt_kprintf("\r\n\r\nSystemInit......\r\n");
 
     // show SN
@@ -233,8 +233,7 @@ void rt_hw_board_init(void)
         uint32_t i;
 
         rt_kprintf("CPU SN: ");
-        for(i=0;i<12;i++)
-        {
+        for (i = 0; i < 12; i++) {
             rt_kprintf("%02X",*sn++);
         }
         rt_kprintf("\r\n");
@@ -266,8 +265,6 @@ void rt_hw_board_init(void)
         }
         rt_kprintf("\rmem test pass!!\r\n");
     }/* memtest */
-
-
 }/* rt_hw_board_init */
 
 void LED_Init(void)

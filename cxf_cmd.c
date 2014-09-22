@@ -20,22 +20,12 @@
 void cxf_list_dirs(const char *directory) 
 {
 	DIR *dir;
-	struct stat s;
-	rt_uint32_t index;
 	rt_uint32_t count;
 	struct dirent *dirent;
 
 	if (directory == RT_NULL) {
 		directory = "/";
 	}
-
-	/*
-	fullpath = rtgui_malloc(256);
-	if (fullpath == RT_NULL) {
-		rt_kprintf("[CXF] error: OOM\r\n");
-		return;
-	}
-	*/
 	
 	dir = opendir(directory);
 	if (dir == RT_NULL) {

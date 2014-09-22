@@ -46,6 +46,9 @@
 extern void radio_rtgui_init(void);
 #endif
 extern void brightness_set(unsigned int value);
+
+extern void ftpd_start(); /* @see ftpd.c */
+
 /* thread phase init */
 void rt_init_thread_entry(void *parameter)
 {
@@ -62,33 +65,34 @@ void rt_init_thread_entry(void *parameter)
 
 		/* mount sd card fat partition 1 as SD directory */
 		if (dfs_mount("sd0", "/", "elm", 0, 0) == 0)
-				rt_kprintf("SD File System initialized!\n");
+			rt_kprintf("SD File System initialized!\n");
 		else
-				rt_kprintf("SD File System init failed!\n");
+			rt_kprintf("SD File System init failed!\n");
       
 #ifdef RT_DFS_ELM_USE_LFN
 		ff_convert_init();
 #endif
     }
 #endif
-
-    load_setup();
+	
+    /* load_setup(); */
 
     /* RTGUI Initialization */
 #ifdef RT_USING_RTGUI
     {
         extern void rt_hw_key_init(void);
         extern void remote_init(void);
-				extern void rtgui_touch_hw_init(void);
+		extern void rtgui_touch_hw_init(void);
 
         radio_rtgui_init();
         rt_hw_key_init();
-				rtgui_touch_hw_init();
+		rtgui_touch_hw_init();
         remote_init();
-    }
-#endif
 		brightness_set(radio_setup.lcd_brightness);
 		//PCM1770_VolumeSet(radio_setup.default_volume);
+    }
+#endif
+	
     /* start RTC */
     rt_hw_rtc_init();
 
@@ -115,7 +119,9 @@ void rt_init_thread_entry(void *parameter)
     /* init netbuf worker */
     net_buf_init(320 * 1024);
 #endif
-  
+	
+	/* TODO(CXF): start ftp and agent */
+	ftpd_start();
 }
 
 int rt_application_init()

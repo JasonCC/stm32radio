@@ -27,3 +27,10 @@
 *.i*86
 *.x86_64
 *.hex
+*.bin
+project.uvgui.*
+project.uvopt
+project.uvgui_Administrator.bak
+project_RT-Thread STM32 Radio.dep
+obj/*
+*.c~

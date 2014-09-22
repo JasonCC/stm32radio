@@ -592,6 +592,21 @@
               <FileType>1</FileType>
               <FilePath>.\cxf_cmd.c</FilePath>
             </File>
+            <File>
+              <FileName>ftpd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\apps\ftpd.c</FilePath>
+            </File>
+            <File>
+              <FileName>ping.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\apps\ping.c</FilePath>
+            </File>
+            <File>
+              <FileName>agent.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\apps\agent.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
